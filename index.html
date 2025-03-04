@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary of an Alcoholic</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: rgb(255, 255, 255);
+            color: white;
+            margin: 0;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: background 1s ease;
+        }
+        #title, #author {
+            position: absolute;
+            cursor: grab;
+            border: 0px solid white;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7); /* Low opacity background */
+            color: white;
+        }
+        #title {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #author {
+            bottom: 10px;
+            right: 10px;
+        }
+        #entryContainer {
+            position: fixed;
+            top: 200px;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            padding: 10px;
+            overflow: visible; /* Ensure overflow is visible */
+            z-index: 10;
+        }
+        .entry {
+            border: 1px solid white;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            margin-bottom: 10px;
+            max-width: 60%; /* Limiting the width to have fewer words per line */
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            position: absolute; /* Allow it to be moved around */
+            cursor: grab; /* Indicate it's draggable */
+            z-index: 100; /* Ensure it's in front of other elements */
+            transition: all 0.3s ease; /* Smooth transition for text movement */
+        }
+        .btn {
+            position: absolute;
+            bottom: 20px; /* Buttons will be at the bottom */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 0px solid white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            z-index: 200; /* Ensure buttons are in front of all other elements */
+        }
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        #page2Button {
+            left: 50%;
+            transform: translateX(-200px);
+        }
+        #page3Button {
+            left: 50%;
+            transform: translateX(-60px);
+        }
+        #page4Button {
+            left: 50%;
+            transform: translateX(120px);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <div id="author"></div>
+    <div id="entryContainer"></div>
+
+    <!-- Buttons linking to other pages -->
+    <button id="page2Button" class="btn" onclick="window.location.href='page2.html'">Read Full Day</button>
+    <button id="page3Button" class="btn" onclick="window.location.href='page3.html'">About This Project</button>
+    <button id="page4Button" class="btn" onclick="window.location.href='page4.html'">Another Point of View</button>
+
+    <script>
+        const diaryEntries = [
+            { time: "05:52", text: "I wake with a headache and a dry mouth. I need a drink. There is a half bottle of cider by my chair and two cans in the fridge. The off licence opens at 8am. I need to find some money." },
+            { time: "07:00", text: "It will take 40 minutes to walk to the off licence. I search in all of the pockets of my trousers and coats, look in drawers and anywhere else there might be some money. I find a fiver and some change, it's not enough for a bottle of cider and some cans but I will work something out." },
+            { time: "07:48", text: "At the shopping centre, just as I am going in I see a man I knew from school, who I haven't seen in years. He says hello. I ask him if he can loan me a fiver. He looks at me with a mixture of confusion and pity and gives me a tenner. I thank him so much that I think I might start crying." },
+            { time: "08:15", text: "On the way home I stop by the lake. We used to drink here when we were teenagers that was 30 years ago and I still come here to get drunk and reminisce. Everything has changed except me." },
+            { time: "10:03", text: "I wake up sitting by the lake. When I started to get a bit drunk I must have fallen asleep. I open a can to drink as I continue walking home." },
+            { time: "10:51", text: "Not far from home passing the pub I see an old friend he asks how I am and invites me for a pint. He feels sorry for me. He keeps saying that he's always liked me and that he would hate to see any harm come to me. His Dad was an alcoholic who died some years ago. I think I remind him of his Dad." },
+            { time: "12:17", text: "After a few pints my mate goes home and another lad who I know buys me a pint, then the barman buys me one. I have known these people all my life. They've always been good to me." },
+            { time: "14:04", text: "I have had a lot to drink and fallen asleep in the corner of the bar. The barman asks if I am OK. He orders me a taxi to get me home." },
+            { time: "14:27", text: "I get home I have a big bottle of strong cider, a bottle of cheap wine and 3 or 4 cans. I sit down and put some music on and start drinking." },
+            { time: "14:30", text: "I know I am an alcoholic and I have tried to stop drinking several times but wasn't able to get more than a few hours. I accept the way that I am and although it makes me sad and part of me would like to stop, I can't." },
+            { time: "15:42", text: "I am mixing cider and wine. There are no apples in this cider, it's strong. I get flashes in my head from it. Electric shocks. Like a monochrome kaleidoscope is attached to my eyes." },
+            { time: "19:06", text: "I must have fallen asleep. I wake with a headache and a dry mouth. I need a drink. There is a half bottle of cider by my chair and two cans in the fridge. The off licence opens at 8am. I need to find some money." }
+        ];
+
+        const gifs = [
+            "url('stage1background.gif')",
+            "url('stage2background.gif')",
+            "url('stage3background.gif')",
+            "url('stage3background.gif')",
+            "url('stage4background.gif')"
+        ];
+
+        // Change background every 4.8 hours (288 minutes) or every 5 entries
+        function changeBackground() {
+            const now = new Date();
+            const index = Math.floor(now.getHours() * 60 / 288) % gifs.length;  // Divide the day into 5 parts
+            document.body.style.backgroundImage = gifs[index];
+        }
+
+        function typeWriterEffect(element, text, speed = 50) {
+            element.textContent = "";
+            let index = 0;
+            function type() {
+                if (index < text.length) {
+                    element.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const title = document.getElementById("title");
+            const author = document.getElementById("author");
+            const entryContainer = document.getElementById("entryContainer");
+
+            typeWriterEffect(title, "diary of an alcoholic", 100);
+            typeWriterEffect(author, "Author: Séamus Fox", 100);
+
+            changeBackground();
+            setInterval(changeBackground, 288 * 60 * 1000); // Change background every 4.8 hours (in ms)
+
+            function updateDiaryEntry() {
+                const now = new Date();
+                const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                let latestEntry = null;
+
+                // Convert time strings to Date objects for comparison
+                const currentTimeObj = new Date(`1970-01-01T${currentTime}:00`);
+
+                for (let entry of diaryEntries) {
+                    const entryTimeObj = new Date(`1970-01-01T${entry.time}:00`);
+
+                    if (entryTimeObj <= currentTimeObj) {
+                        latestEntry = entry;
+                    }
+                }
+
+                if (latestEntry) {
+                    entryContainer.innerHTML = "";  // Clear the container to keep only the latest entry
+                    const entryDiv = document.createElement("div");
+                    entryDiv.className = "entry";
+                    typeWriterEffect(entryDiv, `${latestEntry.time}: ${latestEntry.text}`, 50);
+                    entryContainer.appendChild(entryDiv);
+                }
+            }
+
+            setInterval(updateDiaryEntry, 60000);
+            updateDiaryEntry(); // Initialize the first entry
+        });
+    </script>
+</body>
+</html>

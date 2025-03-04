@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Diary Entries</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding-bottom: 150px; /* Increased space at the bottom for buttons */
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out, color 0.5s ease-in-out;
+            color: black;
+        }
+        p {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            margin-bottom: 30px; /* Increased spacing between entries */
+            line-height: 1.8; /* Improved readability */
+        }
+        p strong {
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        /* Button styling */
+        .btn {
+            position: fixed;
+            bottom: 30px; /* Adjusted to bring buttons higher up */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid white;
+            padding: 15px 60px; /* Increased button size */
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, 
+            font-size: 16px; /* Larger text */
+        }
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0);
+            transform: scale(1.1); /* Slight enlargement on hover */
+        }
+        #btn1 { left: 10%; }
+        #btn2 { left: 27%; }
+        #btn3 { left: 44%; }
+        #btn4 { left: 61%; }
+        #btn5 { left: 78%; }
+
+        /* Go Back Button */
+        .go-back {
+            position: absolute;
+            bottom: -200px; /* Positioned just above the other buttons */
+            left: 3%;
+
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 40px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            border-radius: 8px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Ensures proper alignment of text and arrow */
+            gap: 10px;
+        }
+
+     
+        .go-back:hover {
+            background-color: rgba(255, 255, 255, 0);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Diary of an Alcoholic written by Seamus Fox</h1>
+    
+    <p><strong>05:52</strong> I wake with a headache and a dry mouth. I need a drink. There is a half bottle of cider by my chair and two cans in the fridge. The off-licence opens at 8am. I need to find some money.</p>
+    
+    <p><strong>07:00</strong> It will take 40 minutes to walk to the off-licence. I search in all of the pockets of my trousers and coats, look in drawers and anywhere else there might be some money. I find a fiver and some change, it's not enough for a bottle of cider and some cans but I will work something out.</p>
+    
+    <p><strong>07:48</strong> At the shopping centre, just as I am going in I see a man I knew from school, who I haven't seen in years. He says hello. I ask him if he can loan me a fiver. He looks at me with a mixture of confusion and pity and gives me a tenner. I thank him so much that I think I might start crying.</p>
+    
+    <p><strong>08:15</strong> On the way home I stop by the lake. We used to drink here when we were teenagers. That was 30 years ago and I still come here to get drunk and reminisce. Everything has changed except me.</p>
+    
+    <p><strong>10:03</strong> I wake up sitting by the lake. When I started to get a bit drunk, I must have fallen asleep. I open a can to drink as I continue walking home.</p>
+    
+    <p><strong>10:51</strong> Not far from home, passing the pub, I see an old friend. He asks how I am and invites me for a pint. He feels sorry for me. He keeps saying that he's always liked me and that he would hate to see any harm come to me. His dad was an alcoholic who died some years ago. I think I remind him of his dad.</p>
+    
+    <p><strong>12:17</strong> After a few pints, my mate goes home and another lad who I know buys me a pint, then the barman buys me one. I have known these people all my life. They've always been good to me.</p>
+    
+    <p><strong>14:04</strong> I have had a lot to drink and fallen asleep in the corner of the bar. The barman asks if I am OK. He orders me a taxi to get me home.</p>
+    
+    <p><strong>14:27</strong> I get home. I have a big bottle of strong cider, a bottle of cheap wine, and 3 or 4 cans. I sit down, put some music on, and start drinking.</p>
+    
+    <p><strong>14:30</strong> I know I am an alcoholic and I have tried to stop drinking several times but wasn't able to get more than a few hours. I accept the way that I am and although it makes me sad and part of me would like to stop, I can't.</p>
+    
+    <p><strong>15:42</strong> I am mixing cider and wine. There are no apples in this cider, it's strong. I get flashes in my head from it. Electric shocks. Like a monochrome kaleidoscope is attached to my eyes.</p>
+    
+    <p><strong>19:06</strong> I must have fallen asleep. I wake with a headache and a dry mouth. I need a drink. There is a half bottle of cider by my chair and two cans in the fridge. The off-licence opens at 8am. I need to find some money.</p>
+
+    <!-- Buttons to change the background GIF -->
+    <button id="btn1" class="btn" onclick="changeBackground('stage1background.gif', false)">Background 1</button>
+    <button id="btn2" class="btn" onclick="changeBackground('stage2background.gif', false)">Background 2</button>
+    <button id="btn3" class="btn" onclick="changeBackground('stage3background.gif', false)">Background 3</button>
+    <button id="btn4" class="btn" onclick="changeBackground('stage4background.gif', true)">Background 4</button>
+    <button id="btn5" class="btn" onclick="changeBackground('stage5background.gif', true)">Background 5</button>
+
+    <!-- Go Back Button -->
+    <button class="go-back" onclick="window.location.href = 'index.html';">
+        <span </span> Go Back
+    </button>
+
+    <script>
+        function changeBackground(imageUrl, makeTextWhite) {
+            document.body.style.backgroundImage = `url('${imageUrl}')`;
+            document.body.style.color = makeTextWhite ? 'white' : 'black';
+        }
+    </script>
+</body>
+</html>

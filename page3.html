@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            color: black;
+            padding: 50px;
+        }
+        .typewriter {
+            white-space: pre-line;
+            overflow: hidden;
+            border-right: 2px solid black;
+            display: inline-block;
+            font-size: 18px;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>About This Project</h1>
+    <p id="text" class="typewriter"></p>
+
+    <script>
+        const textParts = [
+            `This project doesn’t attempt to answer questions, nor offer solutions but it allows the reader to step into a life they may not fully understand.\n\n`,
+            `The diary entries, written by poet Séamus Fox, change throughout the day. The most recent entry is shown, giving a live insight into their life. The background changes throughout the day, starting with a gentle noise and then increasing to more and more chaotic as the day goes on.\n\n`,
+            `You can see the full story and click between the backgrounds on the “read full story” page.\n\n`,
+            `This project is designed to be raw and unfiltered. Relating your day to another creates a bond and humanises the struggle, showing the little moments, losses of family and places, people trying to help but not quite understanding how to. There are sections where all of us can relate to, internal struggles, questioning our moments, making impulsive decisions. This is not a story that seeks to romanticize addiction. There is no glorification, no dramatic storytelling, only reality.\n\n`,
+            `It’s inspired by My Child Lebensborn, the idea of using an interactive, time-based progression to link the reader's life to another’s. Events unfolding in real-time.\n\n`,
+            `I worked with Séamus recently on a short film called Deserving and when coming up with the idea of creating a time-based diary I knew I wanted to work with him again.\n\n`,
+            `Link to previous project: `,
+            `<a href="https://ualshowcase.arts.ac.uk/project/533840/cover" target="_blank">UAL Showcase</a>\n\n`,
+            `- Jenna Walsh\n\n`,
+            `A note from Séamus:\nI have rehashed general experiences, some of this has happened to me, and some I know from what happened to others.\n\n`,
+            `One is male, the other female.\n\n`,
+            `When you spend time in recovery you meet hundreds of alcoholics and hear hundreds of stories. All the stories start to merge and you find so many similarities and things from other people’s lives that you identify with.\n\n`,
+            `It’s like one big story that happened to everyone.\n\n`,
+            `In AA meetings you sit in a room with lots of other alcoholics, listening to stories and telling yours. It’s very intimate. People spilling their lives, very emotional, very raw.\n\n`,
+            `I have been sober for more than 14 years now but never forget what it was like. It’s another lifetime, it feels surreal sometimes.\n\n`,
+            `If you are interested in hearing more from Séamus, here are a few links:\nFacebook: `,
+            `<a href="https://www.facebook.com/SeamusFox" target="_blank">Séamus Fox</a>\n`,
+            `Instagram: `,
+            `<a href="https://www.instagram.com/feamussox" target="_blank">@feamussox</a>\n\n`,
+            `Buy his book:\n`,
+            `<a href="https://www.amazon.co.uk/dp/1912092557" target="_blank">Amazon Link</a>\n\n`,
+            `Interview with Séamus Fox on Huffington Post:\n`,
+            `<a href="https://www.huffingtonpost.co.uk/entry/homeless-life-less-ordinary_uk_5bab50cfe4b0f101d38408b8" target="_blank">Read Here</a>\n\n`,
+            `Follow my journey:\nInstagram: `,
+            `<a href="https://www.instagram.com/jenna.does.art.sometimes" target="_blank">@jenna.does.art.sometimes</a>\n`,
+            `Instagram: `,
+            `<a href="https://www.instagram.com/jennawalshx" target="_blank">@jennawalshx</a>`
+        ];
+
+        let i = 0;
+        function typeEffect() {
+            if (i < textParts.length) {
+                let container = document.getElementById("text");
+                
+                // Check if it's a link and append properly
+                if (textParts[i].includes("<a")) {
+                    container.innerHTML += textParts[i]; 
+                } else {
+                    let span = document.createElement("span");
+                    span.innerText = textParts[i]; 
+                    container.appendChild(span);
+                }
+                
+                i++;
+                setTimeout(typeEffect, 5); // Fast typing speed
+            }
+        }
+        window.onload = typeEffect;
+    </script>
+</body>
+</html>

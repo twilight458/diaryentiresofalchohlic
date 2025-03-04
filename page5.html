@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Diary Entries</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding-bottom: 150px; /* Increased space at the bottom for buttons */
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out, color 0.5s ease-in-out;
+            color: black;
+        }
+        p {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            margin-bottom: 30px; /* Increased spacing between entries */
+            line-height: 1.8; /* Improved readability */
+        }
+        p strong {
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        /* Button styling */
+        .btn {
+            position: fixed;
+            bottom: 30px; /* Adjusted to bring buttons higher up */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid white;
+            padding: 15px 60px; /* Increased button size */
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, 
+            font-size: 16px; /* Larger text */
+        }
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0);
+            transform: scale(1.1); /* Slight enlargement on hover */
+        }
+        #btn1 { left: 10%; }
+        #btn2 { left: 27%; }
+        #btn3 { left: 44%; }
+        #btn4 { left: 61%; }
+        #btn5 { left: 78%; }
+
+        /* Go Back Button */
+        .go-back {
+            position: absolute;
+            bottom: -200px; /* Positioned just above the other buttons */
+            left: 3%;
+
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 40px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            border-radius: 8px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Ensures proper alignment of text and arrow */
+            gap: 10px;
+        }
+
+        .go-back:hover {
+            background-color: rgba(255, 255, 255, 0);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Diary of an Alcoholic written by Seamus Fox</h1>
+    
+    <p><strong>07:13</strong> I wake hungover. I need a drink but I would like to stop. There is wine in the kitchen but maybe I will try to stop again.</p>
+    
+    <p><strong>07:50</strong> I am pacing the room. Having a conversation with myself in the mirror in the living room. I am asking myself not to drink and telling myself that I need a drink. It's like I am two people. One who needs to stop and the other who needs a drink.</p>
+    
+    <p><strong>08:13</strong> I wish I could stop drinking. I have been trying but I can't. I shouldn't try to stop now because I might have a seizure.</p>
+    
+    <p><strong>08:47</strong> I am beginning to shake, it's withdrawal. I should go to the doctor in the next few days and ask if I can medically detox. I think I need to go to rehab but I can't stop now or I'll have a seizure.</p>
+    
+    <p><strong>08:55</strong> I pour myself a big glass of wine. I am warm and fuzzy as the first big gulp enters my body followed by big sigh and a feeling of relief. I love this feeling but I hate that it doesn't stay like this. It changes as I drink more and turns into hatred when it wears off. It only takes about 10 seconds for the shaking to stop.</p>
+    
+    <p><strong>09:35</strong> Why do I have to drink? I wish I didn't have to. I miss my Mum. She died seven years ago and every time I drink I miss her. I start crying. I need to go see my Mum.</p>
+    
+    <p><strong>10:01</strong> I call my sister who drives over to collect me. She's taking me to see my Mum. She says she's worried about me. She says I am killing myself. She says this can't go on. She asks me why she bothers. She's crying.</p>
+    
+    <p><strong>10:10</strong> I get out of the car after the short drive to the graveyard. I have nearly two full bottles of wine with me. My sister drives away and says she'll be back for me later.</p>
+    
+    <p><strong>10:15</strong> I fall on the way down the graveyard. A stranger helps me up and asks if I am OK. Of course I am fucking OK I tell them. It's because my mothers dead.</p>
+    
+    <p><strong>10:20</strong> I drink my wine and cry at my mothers grave.</p>
+    
+    <p><strong>13:01</strong> I must have fallen asleep. I wake up and there's still a full bottle of wine. Result. I start drinking that.</p>
+    
+    <p><strong>13:40</strong> I am nearly finished my wine and I start walking back towards home. I can buy more wine on the way back.</p>
+    
+    <p><strong>15:45</strong> I wake up in hospital. They tell me that I was found at the side of the road. The doctor looks like she's really worried about me. She is asking me all sorts of questions. I ask her if she has any wine. If I don't get wine I will have seizures, I tell her. What if I could get you into rehab she asks me? I would love to go to rehab I tell her but can I have some wine first?</p>
+
+    <!-- Buttons to change the background GIF -->
+    <button id="btn1" class="btn" onclick="changeBackground('stage1background.gif', false)">Background 1</button>
+    <button id="btn2" class="btn" onclick="changeBackground('stage2background.gif', false)">Background 2</button>
+    <button id="btn3" class="btn" onclick="changeBackground('stage3background.gif', false)">Background 3</button>
+    <button id="btn4" class="btn" onclick="changeBackground('stage4background.gif', true)">Background 4</button>
+    <button id="btn5" class="btn" onclick="changeBackground('stage5background.gif', true)">Background 5</button>
+
+    <!-- Go Back Button -->
+    <button class="go-back" onclick="window.location.href = 'index.html';">
+        <span></span> Go Back
+    </button>
+
+    <script>
+        function changeBackground(imageUrl, makeTextWhite) {
+            document.body.style.backgroundImage = `url('${imageUrl}')`;
+            document.body.style.color = makeTextWhite ? 'white' : 'black';
+        }
+    </script>
+</body>
+</html>

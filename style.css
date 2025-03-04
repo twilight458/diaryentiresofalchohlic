@@ -1,0 +1,25 @@
+#backButton {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 20px auto; /* Adds space above the button */
+    display: block; /* Ensures it appears below the text */
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn {
+    position: absolute;
+    bottom: 20px; /* Buttons will be at the bottom */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 0px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    z-index: 200; /* Ensure buttons are in front of all other elements */
+}
