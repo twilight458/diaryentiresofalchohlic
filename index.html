@@ -120,13 +120,17 @@
             "url('stage4background.gif')"
         ];
 
-        // Change background every 4.8 hours (288 minutes) or every 5 entries
-        function changeBackground() {
-            const now = new Date();
-            const index = Math.floor(now.getHours() * 60 / 288) % gifs.length;  // Divide the day into 5 parts
-            document.body.style.backgroundImage = gifs[index];
-        }
+   function changeBackground() {
+    const now = new Date();
+    const index = Math.floor((now.getHours() + now.getMinutes() / 60) / 4.8) % gifs.length;  
+    document.body.style.backgroundImage = gifs[index];
+}
 
+// Call function when page loads
+document.addEventListener("DOMContentLoaded", changeBackground);
+
+// Also update background every 4.8 hours (288 minutes)
+setInterval(changeBackground, 288 * 60 * 1000);
         function typeWriterEffect(element, text, speed = 50) {
             element.textContent = "";
             let index = 0;
